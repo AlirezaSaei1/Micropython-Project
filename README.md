@@ -1,15 +1,12 @@
 # Micropython-Project
----
 Micro-python project on pyboard.
 
 
 # What does it do?
----
 It starts counting from 0 to 15 (4-bit counter) and then starts over. When the USR switch is pushed, *calc_distance* function will be called.
 
 
 # *Calc_distance* Function
----
 When switch is pressed, counter is paused and this function:
 1. turns on the LED no.4 (BLUE)
 2. prints the distance of object using **HC-SR04** ultrasonic sensor
@@ -19,7 +16,6 @@ When switch is pressed, counter is paused and this function:
 
 
 # HC-SR04 Sensor
----
 This sensor has 4 pins that we need to worry about:
 1. VCC (Power)
 2. Trig pulse input
