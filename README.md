@@ -3,16 +3,19 @@ Micro-python project on pyboard.
 
 
 # What does it do?
-It starts counting from 0 to 15 (4-bit counter) and then starts over. When the USR switch is pushed, *calc_distance* function will be called.
+It starts counting from 0 to 15 (4-bit counter) and then starts over. When the USR button is pushed, *ISR* function will be called.
 
 
-# *Calc_distance* Function
-When switch is pressed, counter is paused and this function:
-1. turns on the LED no.4 (BLUE)
-2. prints the distance of object using **HC-SR04** ultrasonic sensor
-3. Sleeps 1 second
-4. turns off the LED
-5. counter continues counting
+# *ISR* Function
+When switch is pressed, counter is paused and this function: 
+1. Counter stops counting
+2. Prints the distance of object using **HC-SR04** ultrasonic sensor
+3. Specific LED light (R/B/G/Y) starts blinking 3 times based on counter value (divided into ranges)
+  - RED: (0 to 3)
+  - GREEN: (4 to 7)
+  - YELLOW: (8 to 11)
+  - BLUE: (12 to 15)
+4. Counter continues counting after LED blinks
 
 
 # HC-SR04 Sensor
