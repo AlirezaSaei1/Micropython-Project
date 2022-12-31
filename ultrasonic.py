@@ -1,4 +1,4 @@
-from time import sleep_us
+from time import sleep
 from machine import Pin, time_pulse_us
 
 
@@ -16,7 +16,7 @@ class Ultrasonic(object):
     def distance_cm(self):
         # Send a 10us pulse
         self.trigger.on()
-        sleep_us(10)
+        sleep(0.01)
         self.trigger.off()
 
         time_pulse = time_pulse_us(self.echo, 1, self.timeout)

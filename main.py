@@ -2,23 +2,33 @@ import ultrasonic
 import pyb
 import time
 import micropython
+from handler import Handler
 
 # last exception is tracable by code below (stack trace size == 1)
 micropython.alloc_emergency_exception_buf(100)
 
 
+def ISR():
+    global counter
+    calc_distance()
+
+    if counter in range(0, 4):
+        red = Handler(pyb.LED(1))
+    elif counter in range(4, 8):
+        grn = Handler(pyb.LED(2))
+    elif counter in range(8, 12):
+        ylw = Handler(pyb.LED(3))
+    else:
+        blue = Handler(pyb.LED(4))
+
+
 def calc_distance():
-    led.toggle()
     print(f"Distance: {sensor.distance_cm()}")
-    time.sleep(1)
-    led.toggle()
 
-
-led = pyb.LED(4)
 
 # run calc_distance function when USR switch is pushed
 sw = pyb.Switch()
-sw.callback(calc_distance)
+sw.callback(ISR)
 
 
 sensor_trig_pin = pyb.Pin.board.X3
