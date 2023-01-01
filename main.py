@@ -9,21 +9,22 @@ micropython.alloc_emergency_exception_buf(100)
 
 
 def ISR():
-    global counter
-    calc_distance()
+    dist = calc_distance()
 
-    if counter in range(0, 4):
+    if 0 <= dist < 50:
         red = Handler(pyb.LED(1))
-    elif counter in range(4, 8):
+    elif 50 <= dist < 100:
         grn = Handler(pyb.LED(2))
-    elif counter in range(8, 12):
+    elif 100 <= dist < 150:
         ylw = Handler(pyb.LED(3))
     else:
         blue = Handler(pyb.LED(4))
 
 
 def calc_distance():
-    print(f"Distance: {sensor.distance_cm()}")
+    x = sensor.distance_cm()
+    print(f"Distance: {x}")
+    return x
 
 
 # run calc_distance function when USR switch is pushed
