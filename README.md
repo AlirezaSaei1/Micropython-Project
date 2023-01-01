@@ -10,11 +10,11 @@ It starts counting from 0 to 15 (4-bit counter) and then starts over. When the U
 When switch is pressed, counter is paused and this function: 
 1. Counter stops counting
 2. Prints the distance of object using **HC-SR04** ultrasonic sensor
-3. Specific LED light (R/B/G/Y) starts blinking 3 times based on counter value (divided into ranges) using handler class
-   - RED: counter(0 to 3)
-   - GREEN: counter(4 to 7)
-   - YELLOW: counter(8 to 11)
-   - BLUE: counter(12 to 15)
+3. Specific LED light (R/B/G/Y) starts blinking 3 times based on sensor returned value using handler class
+   - RED: 0-49 cm
+   - GREEN: 50-99 cm
+   - YELLOW: 100-149 cm
+   - BLUE: 150<
 4. Counter continues counting after LED blinks
 
 
